@@ -4,6 +4,9 @@ technical indicators, fundamentals and XGBoost classification
 
 Live deployed webapp: https://confidencescope.streamlit.app
 
+For educational/portfolio purposes only. Not financial advice. Predictions are based on a small dataset and should not
+inform real trading decisions.
+
 1. Tech Stack and environment
 Python, use of Alpha Vantage apis for fundamentals data and news and sentiment data. Use of yfinance for stock price data.
 Use of ta library in Python for technical analysis metrics. Use of Groq api for language model.

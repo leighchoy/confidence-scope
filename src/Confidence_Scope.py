@@ -89,7 +89,7 @@ with st.form("input_form"):
 if submitted:
 
     with st.spinner("Running analysis..."):
-            #api callls
+
             try:
                 results = run_cs_model(ticker,start_date,end_date)
             except Exception as e:
@@ -168,7 +168,7 @@ if submitted:
                 st.write("How the model performs across both classes but weighted according to how many samples each class has.")
             st.divider()
 
-
+st.write("For educational/portfolio purposes only. Not financial advice. Predictions are based on a small dataset and should not inform real trading decisions.")
 st.page_link("pages/2_Model_Structure.py", label = "**Model Info**", icon ="ℹ️",icon_position = "right")
 
 
