@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 from dotenv import load_dotenv
 
 import requests
@@ -192,28 +194,28 @@ def get_earnings_estimates(ticker)->pd.DataFrame:
 
 
 def get_company_overview(ticker)->pd.DataFrame:
-    url = (
-        f"https://www.alphavantage.co/query"
-        f"?function=OVERVIEW"
-        f"&symbol={ticker}"
-        f"&apikey={os.getenv("ALPHAV_API_KEY")}"
-
-    )
     try:
-        r = requests.get(url)
-        data = r.json()
+        info = yf.Ticker(ticker).info
+        if not info or info.get("quoteType") is None:
+            raise ValueError(f"No overview data returned for {ticker}")
+
+        recent = info.get("mostRecentQuarter")
+        latest_quarter = (
+            datetime.fromtimestamp(recent, tz=timezone.utc).strftime("%Y-%m-%d")
+            if recent else None
+        )
+
         records = {
-            "latest_quarter": data.get("LatestQuarter"),
-            "P/E": data.get("PERatio"),
-            "EPS": data.get("EPS"),
-            "Beta": data.get("Beta"),
-            "Description": data.get("Description"),
-            "Sector": data.get("Sector"),
-            "Industry": data.get("Industry"),
-            "Name": data.get("Name")
-       }
-        records = pd.DataFrame([records])
-        return records
+            "latest_quarter": latest_quarter,
+            "P/E": info.get("trailingPE"),
+            "EPS": info.get("trailingEps"),
+            "Beta": info.get("beta"),
+            "Description": info.get("longBusinessSummary"),
+            "Sector": info.get("sector"),
+            "Industry": info.get("industry"),
+            "Name": info.get("longName") or info.get("shortName"),
+        }
+        return pd.DataFrame([records])
     except Exception as e:
         print(f"Error retrieving company overview: {e}")
         return pd.DataFrame()

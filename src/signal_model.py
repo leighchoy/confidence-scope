@@ -1,4 +1,4 @@
-import traceback
+
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score, f1_score, \
@@ -7,13 +7,12 @@ from sklearn.dummy import DummyClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
-import xgboost
-from config import xgb_model, c, THRESHOLD, feature_cols, processed_path
 
-import os
-import joblib
+from config import  c, THRESHOLD, processed_path
+
+
 import pandas as pd
-import matplotlib.pyplot as plt
+
 
 
 
@@ -196,4 +195,3 @@ def get_prediction(model,feature_cols,X : pd.DataFrame,threshold : float = 0.25)
         return prediction, probability
     except Exception as e:
         print(f"Error getting model prediction: {e}")
-
