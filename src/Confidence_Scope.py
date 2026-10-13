@@ -17,7 +17,7 @@ import pandas as pd
 
 @st.cache_data(ttl=3600)
 def run_cs_model(ticker:str,start_date:str,end_date:str):
-    results_df = pd.DataFrame(pd.read_csv(model_training_path("trimmed_class_report_xgb.csv")))
+    results_df = pd.DataFrame(pd.read_csv(model_training_path("trimmed_class_report.csv")))
 
     price_df = get_history(ticker, start_date, end_date)
     price_df = clean_history(price_df)
@@ -34,6 +34,7 @@ def run_cs_model(ticker:str,start_date:str,end_date:str):
     cash_df = get_cash_flow(ticker)
     time.sleep(1.1)
     company_overview = get_company_overview(ticker)
+
 
     financials, dcf = calculate_all(balance_df, price_df, income_df, cash_df, company_overview)
     thesis = get_lm_thesis(ticker, financials, dcf, results_df, company_overview,tech_analysis_df)
