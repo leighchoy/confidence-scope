@@ -1,7 +1,7 @@
 # confidence-scope
 
 ![Home Page](images/HomePage.png)
-![Thesis Example](images/Submitted.png)
+![Thesis Example](images/Submitted1.png)
 ![Technical Analysis](images/ta.png)
 ![Model Structure](images/ModelStructure.png)
 An ML and LLM assisted tool that provides buy or don't buy signals for tickers based on company data including price, 
