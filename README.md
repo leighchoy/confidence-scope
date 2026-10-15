@@ -22,13 +22,13 @@ i. Initially was using Finnhub for the news data and Finbert for making sentimen
    news dates so switched to Alpha Vantage which had sentiment built into the api and larger date range.
 ii. Used ta library as opposed to manually creating technical analysis metrics due to ease and everything I needed was in the library
 iii. Tried to use Claude and Gemini as language models but there was no free tier for Claude and Gemini was simply not working for me
-iv. Used Logistic Regression as a baseline for my other 2 models. Use Random Forest and XGBoost classifiers as I wanted the model to produce a ‘Buy’ or ‘Don’t Buy/Hold’ signal. Initially tested on 350 rows of data and a forecast of 10 days. XGBoost proved to be the best overall performing model. Random Forest would likely need more rows of data.
+iv. Used Logistic Regression as a baseline for my other 2 models. Use Random Forest and XGBoost classifiers as I wanted the model to produce a ‘Buy’ or ‘Don’t Buy/Hold’ signal. Initially evaluated on 350 rows of data and a forecast of 10 days. XGBoost proved to be the best overall performing model. Random Forest would likely need more rows of data.
 v. Chose to use Streamlit to keep everything within Python as opposed to something like node.js for a symbiotically and simpler structure/project.
 vi. Used main.py for local testing with live API calls before plugging into streamlit webapp
 vii. Removed all sentiment functions
 
 3. Findings
-i. XGBoost outperformed Logistic Regression and Random Forest with 73.1% accuracy, 83.3% precision, 61% recall and 0.725 
+i. XGBoost outperformed Logistic Regression and Random Forest with 73.1% accuracy, 83.3% precision, 61% recall and 0.74 
 ROC AUC score on a chronological 80/20 split
 ii. Sentiment features were tested individually and in combination with technical indicators and did not improve any of 
 the model performances or results
