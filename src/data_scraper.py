@@ -205,12 +205,15 @@ def get_company_overview(ticker)->pd.DataFrame:
             if recent else None
         )
 
+        beta = info.get("beta")
+        if beta is None:
+            beta = 1.0
         records = {
             "latest_quarter": latest_quarter,
             "P/E": info.get("trailingPE"),
             "EPS": info.get("trailingEps"),
-            "Beta": info.get("beta"),
             "Description": info.get("longBusinessSummary"),
+            "Beta": beta,
             "Sector": info.get("sector"),
             "Industry": info.get("industry"),
             "Name": info.get("longName") or info.get("shortName"),
