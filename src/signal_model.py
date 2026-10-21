@@ -143,7 +143,7 @@ def train_model_xgb(df:pd.DataFrame) -> tuple[XGBClassifier,int,float,pd.DataFra
 
     )
     model.fit(X_train, y_train)
-    model.save_model("../src/models/xgb_model.json")
+    model.save_model("../src/models/xgbModel.json")
 
     y_prob = model.predict_proba(X_test)[:, 1]
     threshold = 0.25

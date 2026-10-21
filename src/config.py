@@ -12,7 +12,7 @@ THRESHOLD = 0.4
 c = 0.1
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 xgb_model = xgboost.XGBClassifier()
-xgb_model.load_model(os.path.join(BASE_DIR, 'models','xgb_model.json'))
+xgb_model.load_model(os.path.join(BASE_DIR, 'models','xgbModel.json'))
 feature_cols = xgb_model.get_booster().feature_names
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
