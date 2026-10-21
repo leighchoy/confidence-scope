@@ -109,6 +109,17 @@ def get_balance_sheet(ticker)->pd.DataFrame:
     r = requests.get(url)
     try:
         data = r.json()
+        articles = data.get("annualReports")
+        if not articles:
+            reason = (
+                    data.get("Note")
+                    or data.get("Information")
+                    or data.get("Error Message")
+            )
+            print(
+                f"Alpha Vantage balance sheet for {ticker}: "
+                f"response keys={list(data.keys())}, message={reason}"
+            )
         articles = data.get("annualReports", [])
         records = []
 
