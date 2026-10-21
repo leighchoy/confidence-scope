@@ -218,6 +218,8 @@ def get_company_overview(ticker)->pd.DataFrame:
             "Industry": info.get("industry"),
             "Name": info.get("longName") or info.get("shortName"),
         }
+        print(f"{ticker}: Yahoo fields={list(info.keys()) if info else 'no info'}")
+        print(f"{ticker}: Beta={info.get('beta') if info else 'no info'}")
         return pd.DataFrame([records])
     except Exception as e:
         print(f"Error retrieving company overview: {e}")
