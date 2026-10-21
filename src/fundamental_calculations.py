@@ -202,7 +202,8 @@ def calculate_all(balance_df : pd.DataFrame, price_df: pd.DataFrame, income_df :
         return financials_display,dcf
 
     except Exception as e:
-        print(f"Error calculating fundamental ratios: {e}")
+        traceback.print_exc()
+        raise
 
 
 
